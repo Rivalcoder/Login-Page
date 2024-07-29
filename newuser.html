@@ -14,7 +14,7 @@
                 <img src="123.jpg" id="circle" width="500" height="300">
                 <br>
                 <label>Name:</label>
-                  <input type="text" name="name" id="user" required>
+                  <input type="email" name="Email" id="user" required>
                  
                  
               </div>
@@ -66,6 +66,8 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
     const user = userCredential.user;
     // ...
     alert("Login successfull")
+    window.location.href ="game.html";
+
   })
   .catch((error) => {
     const errorCode = error.code;
