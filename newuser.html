@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <title>Sign Up</title>
+    <link rel="icon" type="image/png" href="img.jpg">
+       <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div>
+      <div>
+        <center>
+          <h1>Register</h1>
+          <form>
+              <div>
+                <img src="123.jpg" id="circle" width="500" height="300">
+                <br>
+                <label>Name:</label>
+                  <input type="text" name="name" id="user" required>
+                 
+                 
+              </div>
+              <div>
+                <label>  Pass :</label>
+                  <input type="password" name="password" id="pass" required>
+                  
+                  
+              </div>
+              <button type="submit" id="submit">submit</button>
+              
+          </form>
+        </center>
+      </div>
+  </div>
+  <script type="module">
+
+
+
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+import { getDatabase,ref,set,get,child } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAwwfy5UM3xiHpIpyFMDdBcVtwDwx9q3ow",
+    authDomain: "rivalcoder1.firebaseapp.com",
+    projectId: "rivalcoder1",
+    storageBucket: "rivalcoder1.appspot.com",
+    messagingSenderId: "568226679853",
+    appId: "1:568226679853:web:91a240bc5a0e1fe3e2fca4"
+  };
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db =getDatabase(app);
+  const auth=getAuth(app);
+  document.getElementById("submit").addEventListener('click',function(e){
+    e.preventDefault();
+    var Email=document.getElementById("user").value
+    var pass=document.getElementById("pass").value
+    if(Email==""||pass==""){
+      alert("Please enter a valid username and password")
+    }else{ 
+
+
+        signInWithEmailAndPassword(auth, Email, pass)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+    alert("Login successfull")
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert("wrong Information")
+    window.location.href = "404.html"; 
+  });
+     } })
+    
+
+
+
+
+  </script>
+  </body>
+</html>

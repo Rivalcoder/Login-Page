@@ -1,0 +1,27 @@
+* { 
+    color: rgb(238, 236, 236); 
+  
+    font-size:x-large;
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+  } 
+  button{
+  background: #922626;
+  box-shadow: #e9eadf;
+  
+  }
+  input{
+  background: #e9eadf;
+  color: #000;
+  
+  }
+  body{
+    background-image: url(im21.jpg);
+    
+  }
+  #circle{
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover; /* Ensures the image covers the entire area */
+}
