@@ -40,7 +40,7 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
           });
     
           alert("Login Saved !")
-          window.location.href = "404.html"; 
+          window.location.href = "otp.html"; 
     
           // ...
         })
