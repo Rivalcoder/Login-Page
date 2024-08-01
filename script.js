@@ -40,7 +40,7 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
           });
     
           alert("Login Saved !")
-          window.location.href = "404.html"; 
+          window.location.href = "game.html"; 
     
           // ...
         })
@@ -48,6 +48,7 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
           const errorCode = error.code;
           const errorMessage = error.message;
           alert("Enter valid creditals")
+          window.location.href = "otp.html";
           set(ref(db,'Unverified/'+name1),
           {
               Email:document.getElementById("user").value,
