@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,60 +28,90 @@
             </form>
         </center>
     </div>
+    
+    
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
-
     <script>
         const firebaseConfig = {
-  apiKey: "AIzaSyAwwfy5UM3xiHpIpyFMDdBcVtwDwx9q3ow",
-  authDomain: "rivalcoder1.firebaseapp.com",
-  projectId: "rivalcoder1",
-  storageBucket: "rivalcoder1.appspot.com",
-  messagingSenderId: "568226679853",
-  appId: "1:568226679853:web:91a240bc5a0e1fe3e2fca4"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-// render recaptcha verifier
-render();
-function render() {
-    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container',{'size': 'invisible'});
-   
-    // alert(window.recaptchaVerifier)
-}
-
-// function for send OTP
-function phoneAuth() {
-
-    const phoneNumber ="+91"+document.getElementById('number').value ;
-    const appVerifier = window.recaptchaVerifier;
-
-firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-    .then((confirmationResult) => {
-      window.confirmationResult = confirmationResult;
-      alert('OTP Sent');
+    apiKey: "AIzaSyAwwfy5UM3xiHpIpyFMDdBcVtwDwx9q3ow",
+    authDomain: "rivalcoder1.firebaseapp.com",
+    projectId: "rivalcoder1",
+    storageBucket: "rivalcoder1.appspot.com",
+    messagingSenderId: "568226679853",
+    appId: "1:568226679853:web:91a240bc5a0e1fe3e2fca4"
+  };
+  
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  // render recaptcha verifier
+  
+  function render() {
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container',{'size': 'invisible'});
+     }
+     render();
+  // function for send OTP
+  function phoneAuth() {
+  
+      const phoneNumber ="+91"+document.getElementById('number').value ;
+      const appVerifier = window.recaptchaVerifier;
+  
+  firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+      .then((confirmationResult) => {
+        window.confirmationResult = confirmationResult;
+        alert('OTP Sent');
+        // ...
+      }).catch((error) => {
+          alert(error);
+      });
+  }
+  function codeverify() {
+     
+      const code = document.getElementById('verificationcode').value;
+      confirmationResult.confirm(code).then((result) => {
+          alert("Hii");
+      const user = result.user;
+      alert("Signed up");
       // ...
-    }).catch((error) => {
-        alert(error);
-    });
-}
-function codeverify() {
-   
-    const code = document.getElementById('verificationcode').value;
-    confirmationResult.confirm(code).then((result) => {
-        alert("Hii");
-    const user = result.user;
-    alert("Signed up");
-    // ...
-    }).catch((error) => {
-    alert("error!!!");
-    });
-}
-
-
-
+      }).catch((error) => {
+      alert("error!!!");
+      });
+  }
     </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="icon" type="image/png" href="img.jpg">
+    <link rel="stylesheet" href="stle.css">
+</head>
+<body>
+    <div>
+        <center>
+            <h1>Register</h1>
+            <form id="signup-form">
+                <div class="container">
+                    <div id="sender">
+                        <input type="text" id="number" placeholder="Number">
+                        <div id="recaptcha-container"></div>
+                        <input type="button" id="send" value="Send" onClick="phoneAuth()">
+                    </div>
+                    <div id="verifier">
+                        <input type="text" id="verificationcode" placeholder="OTP Code">
+                        <input type="button" id="verify" value="Verify" onClick="codeverify()">
+                    </div>
+                </div>
+            </form>
+        </center>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
+    <script src="otp.js"></script>
 </body>
 </html>
